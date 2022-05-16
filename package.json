@@ -1,0 +1,23 @@
+{
+  "name": "fastify-nodb-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lambda.js",
+  "scripts": {
+    "deploy": "claudia create --handler lambda.handler --deploy-proxy-api --region us-east-1",
+    "update": "claudia update",
+    "generate-proxy": "claudia generate-serverless-express-proxy --express-module app"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.1.1",
+    "aws-lambda-fastify": "^2.1.2",
+    "claudia": "^5.14.1",
+    "fastify": "^3.29.0",
+    "mongoose": "^6.3.3",
+    "pino-pretty": "^7.6.1",
+    "uuid": "^8.3.2"
+  }
+}

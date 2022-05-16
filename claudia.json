@@ -1,0 +1,10 @@
+{
+  "lambda": {
+    "role": "fastify-nodb-api-executor",
+    "name": "fastify-nodb-api",
+    "region": "us-east-1"
+  },
+  "api": {
+    "id": "fxuduknsd5"
+  }
+}
