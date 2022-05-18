@@ -3,47 +3,11 @@ const app = require("fastify")({
   logger: { level: "info", prettyPrint: true },
 });
 // const app = fastify();
-//import controllers
-const {
-  addRecordController,
-  indexController,
-  homeController,
-  editRecordsController,
-  editRecordController,
-} = require("./controllers/testControllers");
-
-/**options */
-const addOpts = {
-  schema: {
-    body: {
-      type: "object",
-      properties: {
-        name: { type: "string" },
-      },
-      required: ["name"],
-    },
-    response: {
-      200: {
-        type: "object",
-        properties: {
-          message: { type: "string" },
-        },
-      },
-    },
-  },
-};
-
 /**Lmabda all Routes */
 function routes(server, options, done) {
-  /**Index route */
-  app.get("/", indexController);
-  /**lambda GET route */
-  app.get("/home", homeController);
-  /**lambda POST route */
-  app.post("/add", addOpts, addRecordController);
-  /**lambda PUT route */
-  app.put("/edit", addOpts, editRecordsController);
-  app.put("/edit/:id", addOpts, editRecordController);
+  /**register routes */
+  app.register(require("./routes/api/routes"));
+  app.register(require("./routes/api/users/userRoutes"));
   //return route
   return app;
 }

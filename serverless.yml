@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: "2022-05-018"
+Transform: AWS::Serverless-2022-05-18
+Description: >
+  FastifyLambdaApp
+  Basic CRUD APP
+
+Globals:
+  Function:
+    Timeout: 30
+
+Resources:
+  FastifyLambdaApp:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: lambda.handler
+      PackageType: Zip
+      Runtime: nodejs14.x
+      MemorySize: 128
+      Timeout: 500
+      Events:
+        AppEventAPI:
+          Type: HttpApi
+          Properties:
+            Path: /{proxy+}
+            Method: any
